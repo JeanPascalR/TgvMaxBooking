@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingFile name="RollingFile" fileName="/tmp/train_booking.log"
+			filePattern="/tmp/train_booking-%d{MM-dd-yyyy}.log" ignoreExceptions="false">
+			<PatternLayout>
+				<pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.rambaud.train.train_booking" level="debug"
+			additivity="false">
+			<AppenderRef ref="RollingFile"></AppenderRef>
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
